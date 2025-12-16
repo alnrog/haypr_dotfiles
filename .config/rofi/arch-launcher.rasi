@@ -1,0 +1,124 @@
+configuration {
+  show-icons: true;
+  drun-display-format: "{name}";
+  font: "JetBrains Mono 12";
+  icon-theme: "Papirus";
+}
+
+* {
+  bg:     #1e1e2e;
+  bg2:    #2a2a3a;
+  fg:     #ffffff;
+  fg2:    #cfd6e6;
+  accent: #88c0d0;
+
+  radius: 8px;
+}
+
+/* Base containers */
+window {
+  width: 420;
+
+  background-color: @bg;
+  border: 2px;
+  border-color: @accent;
+  border-radius: @radius;
+}
+
+mainbox {
+  padding: 6px;
+  background-color: @bg;
+}
+
+box {
+  background-color: @bg;
+}
+
+view {
+  background-color: @bg;
+}
+
+listview {
+  lines: 10;
+  spacing: 2px;
+  background-color: @bg;
+}
+
+inputbar {
+  padding: 6px 8px;
+  background-color: @bg2;
+  border-radius: 6px;
+  text-color: @fg;
+}
+
+prompt { enabled: false; }
+
+entry {
+  background-color: @bg2;
+  text-color: @fg;
+  placeholder: "Search…";
+}
+
+/* Elements */
+element {
+  padding: 6px 8px;
+  border-radius: 6px;
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element normal {
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element active {
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element urgent {
+  background-color: @bg;
+  text-color: @fg;
+}
+
+element selected {
+  background-color: @accent;
+  text-color: @bg;
+}
+
+element selected normal {
+  background-color: @accent;
+  text-color: @bg;
+}
+
+element selected active {
+  background-color: @accent;
+  text-color: @bg;
+}
+
+element selected urgent {
+  background-color: @accent;
+  text-color: @bg;
+}
+
+element-icon {
+  size: 20px;
+  margin: 0 8px 0 0;
+  background-color: transparent;
+}
+
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+}
+
+/* Some rofi builds render rows/textboxes with their own bg */
+row {
+  background-color: @bg;
+}
+
+textbox {
+  background-color: transparent;
+  text-color: @fg;
+}

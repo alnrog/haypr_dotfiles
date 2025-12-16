@@ -1,0 +1,56 @@
+* {
+  font-family: "JetBrains Mono", "Noto Sans", sans-serif;
+  font-size: 12px;
+  color: #ECEFF4;
+}
+
+#custom-arch {
+  padding: 0 14px;
+  margin: 6px 6px 6px 4px;
+  border-radius: 10px;
+  background: #2a2a3a;
+  color: #88c0d0;
+  font-size: 16px;
+}
+
+#custom-arch:hover {
+  background: #88c0d0;
+  color: #1e1e2e;
+}
+
+window#waybar {
+  background: #1e1e2e;
+  border: 2px solid #88c0d0;
+  border-radius: 10px;
+
+  margin: 5px;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 6px 3px;
+  border-radius: 8px;
+  background: #2a2a3a;
+}
+
+#workspaces button.active {
+  background: #88c0d0;
+  color: #1e1e2e;
+}
+
+#clock,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-power,
+#tray {
+  padding: 6px 10px;
+  margin: 6px 4px;
+  border-radius: 8px;
+  background: #2a2a3a;
+}
+
+#tray {
+  margin-left: 10px;
+}
+

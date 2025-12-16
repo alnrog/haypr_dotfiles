@@ -1,0 +1,44 @@
+# Кэш и временные файлы
+*.log
+*.cache
+*.tmp
+*.bak
+*.swp
+*~
+
+# Бэкапы
+*.backup.*
+*.old
+
+# Hyprland специфичные
+.config/hypr/hyprland.conf.old
+.config/hypr/*.log
+
+# Личные данные и токены
+**/secrets.conf
+**/private.conf
+**/.env
+
+# История и кэш
+.config/*/cache/
+.config/*/Cache/
+.config/*/logs/
+
+# Клавиатура и мышь (специфично для железа)
+# Можешь раскомментировать если не хочешь их коммитить:
+# .config/hypr/monitors.conf
+
+# Скомпилированные файлы Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Node modules (если используешь)
+node_modules/
+
+# MacOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

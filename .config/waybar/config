@@ -1,0 +1,57 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 38,
+
+  "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["clock"],
+  "modules-right": ["pulseaudio", "network", "bluetooth", "tray", "custom/power"],
+
+  "custom/arch": {
+    "format": "",
+    "tooltip": "Applications",
+    "on-click": "~/.config/hypr/scripts/launcher.sh"
+  },
+
+  "hyprland/workspaces": {
+    "disable-scroll": false
+  },
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}"
+  },
+
+  "pulseaudio": {
+    "format": "{volume}% ",
+    "format-muted": "muted ",
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format-wifi": "{icon}",
+    "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
+    "format-ethernet": "󰈀",
+    "format-disconnected": "󰤭",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "Ethernet",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "~/.config/hypr/scripts/toggle-wifi-mode.sh",
+    "on-click-right": "nm-connection-editor"
+  },
+
+  "bluetooth": {
+    "format": "",
+    "format-disabled": "",
+    "format-off": "",
+    "tooltip-format": "{status}",
+    "on-click": "blueman-manager"
+  },
+
+
+  "custom/power": {
+    "format": "⏻",
+    "tooltip": "Power",
+    "on-click": "~/.config/hypr/scripts/powermenu.sh"
+  }
+
+}

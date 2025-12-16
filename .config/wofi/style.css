@@ -1,0 +1,32 @@
+window {
+  background-color: #1e1e2e;
+  border: 2px solid #88c0d0;
+  border-radius: 8px;
+}
+
+#input {
+  margin: 6px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  background-color: #2a2a3a;
+  color: #ffffff;
+}
+
+#outer-box {
+  margin: 6px;
+}
+
+#entry {
+  padding: 6px 8px;
+  border-radius: 6px;
+  color: #ffffff;
+}
+
+#entry:selected {
+  background-color: #88c0d0;
+  color: #1e1e2e;
+}
+
+#text {
+  color: inherit;
+}
