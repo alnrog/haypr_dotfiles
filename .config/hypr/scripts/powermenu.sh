@@ -1,19 +1,20 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-THEME="$HOME/.config/rofi/arch-launcher.rasi"
+# Power menu using wofi
 
-choice="$(printf "⏻  Shutdown\n  Reboot\n  Lock\n󰗽  Logout\n" | \
+choice="$(printf "⏻  Shutdown\n  Reboot\n  Lock\n󰗽  Logout\n  Suspend\n" | \
   wofi --dmenu \
-    --promt "Power" \
-    --location top_right \
-    --xoffset -5 \
-    --yoffset 43)"
+    --prompt "Power" \
+    --width 300 \
+    --height 250 \
+    --location center)"
 
 case "$choice" in
   "⏻  Shutdown") systemctl poweroff ;;
   "  Reboot") systemctl reboot ;;
   "  Lock") "$HOME/.config/hypr/scripts/lock.sh" ;;
   "󰗽  Logout") hyprctl dispatch exit ;;
+  "Suspend") systemctl suspend ;;
   *) exit 0 ;;
 esac

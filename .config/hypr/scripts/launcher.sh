@@ -1,12 +1,17 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# toggle: если wofi уже открыт — закрыть
-if pgrep -x wofi >/dev/null 2>&1; then
-  pkill -x wofi
+# Rofi launcher with toggle behavior
+
+if pgrep -x rofi >/dev/null 2>&1; then
+  pkill -x rofi
   exit 0
 fi
 
-# top_left позволяет и xoffset, и yoffset (важно) :contentReference[oaicite:1]{index=1}
-exec wofi --show drun --location top_left --xoffset 5 --yoffset 43
-
+rofi -show drun \
+  -theme ~/.config/rofi/launcher.rasi \
+  -show-icons \
+  -drun-display-format "{name}" \
+  -disable-history \
+  -hide-scrollbar \
+  -display-drun "Applications"
