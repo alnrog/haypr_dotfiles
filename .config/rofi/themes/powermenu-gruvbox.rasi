@@ -1,0 +1,76 @@
+/*******************************************************************************
+ * Rofi Powermenu - Gruvbox Dark
+ ******************************************************************************/
+
+* {
+    bg:           #282828;
+    bg-alt:       #3c3836;
+    fg:           #ebdbb2;
+    accent:       #fabd2f;
+
+    background-color: transparent;
+    text-color: @fg;
+}
+
+window {
+    transparency: "real";
+    location: center;
+    anchor: center;
+    fullscreen: false;
+    width: 500px;
+    
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ listview ];
+    spacing: 0px;
+}
+
+listview {
+    background-color: transparent;
+    columns: 5;
+    lines: 1;
+    spacing: 15px;
+    cycle: true;
+    dynamic: true;
+    layout: vertical;
+}
+
+element {
+    background-color: @bg-alt;
+    text-color: @fg;
+    orientation: vertical;
+    border-radius: 12px;
+    padding: 30px 20px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    expand: true;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+    margin: 0px;
+}
+
+element normal.normal {
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+    border: 0px;
+}
+
+element alternate.normal {
+    background-color: @bg-alt;
+    text-color: @fg;
+}

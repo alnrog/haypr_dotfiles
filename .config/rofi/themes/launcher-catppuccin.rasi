@@ -1,0 +1,120 @@
+/*******************************************************************************
+ * Rofi Launcher - Catppuccin Mocha
+ ******************************************************************************/
+
+* {
+    bg:           #1e1e2e;
+    bg-alt:       #313244;
+    fg:           #cdd6f4;
+    fg-alt:       #bac2de;
+    accent:       #cba6f7;
+    accent-alt:   #b4befa;
+    border:       #45475a;
+    urgent:       #f38ba8;
+    active:       #a6e3a1;
+
+    background-color: transparent;
+    text-color: @fg;
+    
+    border: 0;
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    location: center;
+    width: 600;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+}
+
+inputbar {
+    padding: 12px;
+    spacing: 12px;
+    background-color: @bg-alt;
+    border-radius: 12px 12px 0 0;
+    children: [prompt, entry];
+}
+
+prompt {
+    text-color: @accent;
+}
+
+entry {
+    placeholder: "Search...";
+    placeholder-color: @fg-alt;
+}
+
+message {
+    margin: 12px 0 0;
+    border-radius: 8px;
+    background-color: @bg-alt;
+    text-color: @fg;
+}
+
+textbox {
+    padding: 8px 12px;
+}
+
+listview {
+    lines: 8;
+    columns: 1;
+    fixed-height: false;
+    margin: 12px;
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    padding: 10px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+element alternate.normal {
+    background-color: transparent;
+    text-color: @fg;
+}
+
+element normal.active {
+    background-color: transparent;
+    text-color: @active;
+}
+
+element selected.active {
+    background-color: @active;
+    text-color: @bg;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color: @urgent;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @bg;
+}
+
+element-icon {
+    size: 1.2em;
+    margin: 0 8px 0 0;
+}
+
+element-text {
+    text-color: inherit;
+}

@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Universal Theme Switcher
-# Changes colors for: Hyprland, Waybar, SwayNC, Wofi, Rofi
+# Changes colors for: Hyprland, Waybar, Rofi, Hyprlock
 
 THEMES_DIR="$HOME/.config/hypr/themes"
 CURRENT_THEME_FILE="$HOME/.cache/current_theme"
@@ -37,14 +37,32 @@ apply_theme() {
         ln -sf "$THEMES_DIR/waybar-$THEME.css" "$HOME/.config/waybar/style.css"
     fi
     
-    # 3. SwayNC colors (if exists)
-    if [ -f "$THEMES_DIR/swaync-$THEME.css" ]; then
-        ln -sf "$THEMES_DIR/swaync-$THEME.css" "$HOME/.config/swaync/style.css"
+    # 3. Hyprlock colors
+    if [ -f "$THEMES_DIR/hyprlock-$THEME.conf" ]; then
+        ln -sf "$THEMES_DIR/hyprlock-$THEME.conf" "$HOME/.config/hypr/hyprlock.conf"
     fi
     
-    # 4. Wofi colors (if exists)
-    if [ -f "$THEMES_DIR/wofi-$THEME.css" ]; then
-        ln -sf "$THEMES_DIR/wofi-$THEME.css" "$HOME/.config/wofi/style.css"
+    # 4. Rofi themes
+    if [ -d "$HOME/.config/rofi/themes" ]; then
+        # Launcher
+        if [ -f "$HOME/.config/rofi/themes/launcher-$THEME.rasi" ]; then
+            ln -sf "$HOME/.config/rofi/themes/launcher-$THEME.rasi" "$HOME/.config/rofi/launcher.rasi"
+        fi
+        
+        # Powermenu
+        if [ -f "$HOME/.config/rofi/themes/powermenu-$THEME.rasi" ]; then
+            ln -sf "$HOME/.config/rofi/themes/powermenu-$THEME.rasi" "$HOME/.config/rofi/powermenu.rasi"
+        fi
+        
+        # Calendar
+        if [ -f "$HOME/.config/rofi/themes/calendar-$THEME.rasi" ]; then
+            ln -sf "$HOME/.config/rofi/themes/calendar-$THEME.rasi" "$HOME/.config/rofi/calendar.rasi"
+        fi
+        
+        # Clipboard
+        if [ -f "$HOME/.config/rofi/themes/clipboard-$THEME.rasi" ]; then
+            ln -sf "$HOME/.config/rofi/themes/clipboard-$THEME.rasi" "$HOME/.config/rofi/clipboard.rasi"
+        fi
     fi
     
     # Save current theme
@@ -53,7 +71,6 @@ apply_theme() {
     # Reload everything
     hyprctl reload
     pkill waybar && sleep 0.2 && waybar &
-    pkill swaync && sleep 0.2 && swaync &
     
     notify-send "Theme Applied" "Switched to $THEME theme" \
         --urgency=low \

@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Rofi Calendar - Catppuccin Mocha
+ ******************************************************************************/
+
+* {
+    bg:           #1e1e2e;
+    bg-alt:       #313244;
+    fg:           #cdd6f4;
+    fg-alt:       #bac2de;
+    accent:       #cba6f7;
+
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrains Mono 10";
+}
+
+window {
+    location: north east;
+    anchor: north east;
+    x-offset: -10px;
+    y-offset: 48px;
+    width: 280px;
+    
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ message, listview ];
+    spacing: 0px;
+    padding: 12px;
+}
+
+message {
+    background-color: transparent;
+    border: 0px;
+    padding: 0px 0px 8px 0px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color: @accent;
+    vertical-align: 0.5;
+    horizontal-align: 0.5;
+    font: "JetBrains Mono Bold 12";
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 12;
+    spacing: 2px;
+    cycle: false;
+    dynamic: true;
+    layout: vertical;
+    fixed-height: true;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg-alt;
+    orientation: horizontal;
+    border-radius: 4px;
+    padding: 3px 6px;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    font: "JetBrains Mono 9";
+    expand: true;
+    horizontal-align: 0.5;
+    vertical-align: 0.5;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+}
