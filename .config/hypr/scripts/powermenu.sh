@@ -1,20 +1,47 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Power menu using wofi
+# Rofi Powermenu
+# Beautiful power options menu
 
-choice="$(printf "⏻  Shutdown\n  Reboot\n  Lock\n󰗽  Logout\n  Suspend\n" | \
-  wofi --dmenu \
-    --prompt "Power" \
-    --width 300 \
-    --height 250 \
-    --location center)"
+# Options with icons
+#shutdown="⏻  Shutdown"
+#reboot=" Reboot"
+#lock=" Lock"
+#suspend="󰤄 Suspend"
+#logout="󰗽 Logout"
+shutdown="⏻"
+reboot=""
+lock=""
+suspend="󰤄"
+logout="󰗽"
 
-case "$choice" in
-  "⏻  Shutdown") systemctl poweroff ;;
-  "  Reboot") systemctl reboot ;;
-  "  Lock") "$HOME/.config/hypr/scripts/lock.sh" ;;
-  "󰗽  Logout") hyprctl dispatch exit ;;
-  "Suspend") systemctl suspend ;;
-  *) exit 0 ;;
+# Rofi prompt
+chosen=$(echo -e "$lock\n$logout\n$suspend\n$reboot\n$shutdown" | \
+    rofi -dmenu \
+        -i \
+        -p "Power Menu" \
+        -theme ~/.config/rofi/powermenu.rasi \
+        -selected-row 0)
+
+# Execute action
+case "$chosen" in
+    "$shutdown")
+        systemctl poweroff
+        ;;
+    "$reboot")
+        systemctl reboot
+        ;;
+    "$lock")
+        hyprlock
+        ;;
+    "$suspend")
+        systemctl suspend
+        ;;
+    "$logout")
+        hyprctl dispatch exit
+        ;;
+    *)
+        exit 0
+        ;;
 esac
