@@ -1,0 +1,96 @@
+/* Gruvbox Dark - Waybar */
+
+* {
+  font-family: "JetBrains Mono", "Noto Sans", sans-serif;
+  font-size: 12px;
+  color: #ebdbb2;
+}
+
+#custom-arch {
+  padding: 0 14px;
+  margin: 6px 6px 6px 4px;
+  border-radius: 10px;
+  background: #3c3836;
+  color: #fabd2f;
+  font-size: 16px;
+}
+
+#custom-arch:hover {
+  background: #fabd2f;
+  color: #282828;
+}
+
+window#waybar {
+  background: #282828;
+  border: 2px solid #fabd2f;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 6px 3px;
+  border-radius: 10px;
+  background: #3c3836;
+  color: #ebdbb2;
+}
+
+#workspaces button.active {
+  background: #fabd2f;
+  color: #282828;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-power,
+#tray {
+  padding: 6px 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #3c3836;
+}
+
+/* CPU */
+#cpu {
+  color: #fabd2f;
+}
+
+#cpu:hover {
+  background: #fabd2f;
+  color: #282828;
+}
+
+/* Memory */
+#memory {
+  color: #83a598;
+}
+
+#memory:hover {
+  background: #83a598;
+  color: #282828;
+}
+
+/* Temperature */
+#temperature {
+  color: #b8bb26;
+}
+
+#temperature.critical {
+  color: #fb4934;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Tray */
+#tray {
+  margin-left: 10px;
+}

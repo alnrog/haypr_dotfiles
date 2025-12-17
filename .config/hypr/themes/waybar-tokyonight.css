@@ -1,0 +1,96 @@
+/* Tokyo Night - Waybar */
+
+* {
+  font-family: "JetBrains Mono", "Noto Sans", sans-serif;
+  font-size: 12px;
+  color: #c0caf5;
+}
+
+#custom-arch {
+  padding: 0 14px;
+  margin: 6px 6px 6px 4px;
+  border-radius: 10px;
+  background: #24283b;
+  color: #7aa2f7;
+  font-size: 16px;
+}
+
+#custom-arch:hover {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+window#waybar {
+  background: #1a1b26;
+  border: 2px solid #7aa2f7;
+  border-radius: 10px;
+}
+
+#workspaces button {
+  padding: 0 10px;
+  margin: 6px 3px;
+  border-radius: 10px;
+  background: #24283b;
+  color: #c0caf5;
+}
+
+#workspaces button.active {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+#clock,
+#cpu,
+#memory,
+#temperature,
+#pulseaudio,
+#network,
+#bluetooth,
+#custom-power,
+#tray {
+  padding: 6px 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #24283b;
+}
+
+/* CPU */
+#cpu {
+  color: #7aa2f7;
+}
+
+#cpu:hover {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+/* Memory */
+#memory {
+  color: #bb9af7;
+}
+
+#memory:hover {
+  background: #bb9af7;
+  color: #1a1b26;
+}
+
+/* Temperature */
+#temperature {
+  color: #9ece6a;
+}
+
+#temperature.critical {
+  color: #f7768e;
+  animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Tray */
+#tray {
+  margin-left: 10px;
+}
