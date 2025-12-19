@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Wallpaper switcher for swww
+# Wallpaper switcher for swww with state persistence
 # Usage: 
 #   ./wallpaper.sh random    - set random wallpaper
 #   ./wallpaper.sh next      - next wallpaper
@@ -11,12 +11,13 @@ set -euo pipefail
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 CACHE_FILE="$HOME/.cache/current_wallpaper"
 
-# Transition effects (можно менять)
+# Transition effects
 TRANSITION_TYPE="fade"  # wave, simple, fade, wipe, outer, random
 TRANSITION_DURATION=2
 
 # Create wallpaper directory if it doesn't exist
 mkdir -p "$WALLPAPER_DIR"
+mkdir -p "$(dirname "$CACHE_FILE")"
 
 # Get list of wallpapers
 mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | sort)
@@ -44,11 +45,19 @@ get_current_index() {
 set_wallpaper() {
     local wallpaper="$1"
     
+    # Set wallpaper with swww
     swww img "$wallpaper" \
         --transition-type "$TRANSITION_TYPE" \
         --transition-duration "$TRANSITION_DURATION"
     
+    # Save current wallpaper path
     echo "$wallpaper" > "$CACHE_FILE"
+    
+    # Copy for SDDM (with error handling)
+    if [ -w /tmp ]; then
+        cp "$wallpaper" /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
+        chmod 644 /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
+    fi
     
     local filename=$(basename "$wallpaper")
     notify-send "Wallpaper changed" "$filename" \

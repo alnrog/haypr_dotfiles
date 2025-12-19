@@ -1,0 +1,119 @@
+/* SwayNC - Catppuccin Mocha Theme */
+
+* {
+  font-family: "JetBrains Mono", sans-serif;
+  color: #cdd6f4;
+}
+
+.notification {
+  background: #1e1e2e;
+  border-radius: 10px;
+  border: 2px solid #cba6f7;
+  padding: 10px;
+  margin: 5px;
+}
+
+.control-center {
+  background: #1e1e2e;
+  border: 2px solid #cba6f7;
+  border-radius: 10px;
+}
+
+.notification-body {
+  color: #cdd6f4;
+}
+
+.notification-title {
+  color: #cba6f7;
+  font-weight: bold;
+}
+
+.notification-app-name {
+  color: #b4befa;
+  font-size: 0.9em;
+}
+
+.notification-time {
+  color: #bac2de;
+  font-size: 0.8em;
+}
+
+.close-button {
+  background: #313244;
+  color: #cdd6f4;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.close-button:hover {
+  background: #cba6f7;
+  color: #1e1e2e;
+}
+
+.notification-action {
+  background: #313244;
+  color: #cdd6f4;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.notification-action:hover {
+  background: #cba6f7;
+  color: #1e1e2e;
+}
+
+.critical {
+  border-color: #f38ba8;
+}
+
+.control-center-header {
+  background: #313244;
+  color: #cdd6f4;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.control-center-dnd {
+  background: #313244;
+  color: #cdd6f4;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-dnd:checked {
+  background: #cba6f7;
+  color: #1e1e2e;
+}
+
+.control-center-clear-all {
+  background: #313244;
+  color: #cdd6f4;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-clear-all:hover {
+  background: #f38ba8;
+  color: #cdd6f4;
+}
+
+.widget-title {
+  color: #cba6f7;
+  font-weight: bold;
+}
+
+scrollbar {
+  background: #313244;
+  border-radius: 5px;
+}
+
+slider {
+  background: #cba6f7;
+  border-radius: 5px;
+}

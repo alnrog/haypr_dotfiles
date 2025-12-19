@@ -20,6 +20,28 @@
   color: #1e1e2e;
 }
 
+/* --- Workspace Icons --- */
+#custom-workspaces {
+  padding: 0 4px;
+  margin: 6px 3px;
+  border-radius: 8px;
+}
+
+#custom-workspaces .active {
+  color: #88c0d0;
+  border: 2px solid #88c0d0;
+  background: transparent;
+  padding: 0 6px;
+  border-radius: 10px;
+}
+
+#custom-workspaces .inactive {
+  color: #eceff4;
+  background: #2a2a3a;
+  padding: 0 6px;
+  border-radius: 10px;
+}
+
 window#waybar {
   background: #1e1e2e;
   border: 2px solid #88c0d0;
@@ -35,6 +57,13 @@ window#waybar {
 }
 
 #workspaces button.active {
+  background: transparent;
+  color: #1e1e2e;
+  border: 2px solid #88c0d0;
+  font-weight: bold;
+}
+
+#workspaces button:hover {
   background: #88c0d0;
   color: #1e1e2e;
 }

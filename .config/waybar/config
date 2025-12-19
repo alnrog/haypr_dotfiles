@@ -4,7 +4,7 @@
   "height": 38,
   "margin": "6 6 0 6",
 
-  "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
+  "modules-left": ["custom/arch", "hyprland/workspaces", "custom/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
   "modules-right": ["cpu", "memory", "temperature", "pulseaudio", "network", "bluetooth", "tray", "custom/power"],
 
@@ -16,6 +16,12 @@
 
   "hyprland/workspaces": {
     "disable-scroll": false
+  },
+
+  "custom/workspaces": {
+    "exec": "~/.config/waybar/scripts/workspaces-icons.sh",
+    "interval": 2,
+    "format": "{}"
   },
 
   "clock": {

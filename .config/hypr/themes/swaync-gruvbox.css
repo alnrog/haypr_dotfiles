@@ -1,0 +1,119 @@
+/* SwayNC - Gruvbox Dark Theme */
+
+* {
+  font-family: "JetBrains Mono", sans-serif;
+  color: #ebdbb2;
+}
+
+.notification {
+  background: #282828;
+  border-radius: 10px;
+  border: 2px solid #fabd2f;
+  padding: 10px;
+  margin: 5px;
+}
+
+.control-center {
+  background: #282828;
+  border: 2px solid #fabd2f;
+  border-radius: 10px;
+}
+
+.notification-body {
+  color: #ebdbb2;
+}
+
+.notification-title {
+  color: #fabd2f;
+  font-weight: bold;
+}
+
+.notification-app-name {
+  color: #83a598;
+  font-size: 0.9em;
+}
+
+.notification-time {
+  color: #d5c4a1;
+  font-size: 0.8em;
+}
+
+.close-button {
+  background: #3c3836;
+  color: #ebdbb2;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.close-button:hover {
+  background: #fabd2f;
+  color: #282828;
+}
+
+.notification-action {
+  background: #3c3836;
+  color: #ebdbb2;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.notification-action:hover {
+  background: #fabd2f;
+  color: #282828;
+}
+
+.critical {
+  border-color: #fb4934;
+}
+
+.control-center-header {
+  background: #3c3836;
+  color: #ebdbb2;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.control-center-dnd {
+  background: #3c3836;
+  color: #ebdbb2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-dnd:checked {
+  background: #fabd2f;
+  color: #282828;
+}
+
+.control-center-clear-all {
+  background: #3c3836;
+  color: #ebdbb2;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-clear-all:hover {
+  background: #fb4934;
+  color: #ebdbb2;
+}
+
+.widget-title {
+  color: #fabd2f;
+  font-weight: bold;
+}
+
+scrollbar {
+  background: #3c3836;
+  border-radius: 5px;
+}
+
+slider {
+  background: #fabd2f;
+  border-radius: 5px;
+}

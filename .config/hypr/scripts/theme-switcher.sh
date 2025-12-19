@@ -2,10 +2,12 @@
 set -euo pipefail
 
 # Universal Theme Switcher
-# Changes colors for: Hyprland, Waybar, Rofi, Hyprlock
+# Changes colors for: Hyprland, Waybar, Rofi, Hyprlock, SwayNC, SDDM
 
 THEMES_DIR="$HOME/.config/hypr/themes"
 CURRENT_THEME_FILE="$HOME/.cache/current_theme"
+SDDM_THEME_FILE="/tmp/hyprland-current-theme"
+SDDM_WALLPAPER="/tmp/hyprland-current-wallpaper.jpg"
 
 # Available themes
 THEMES=("nord" "catppuccin" "tokyonight" "gruvbox")
@@ -42,7 +44,12 @@ apply_theme() {
         ln -sf "$THEMES_DIR/hyprlock-$THEME.conf" "$HOME/.config/hypr/hyprlock.conf"
     fi
     
-    # 4. Rofi themes
+    # 4. SwayNC colors
+    if [ -f "$THEMES_DIR/swaync-$THEME.css" ]; then
+        ln -sf "$THEMES_DIR/swaync-$THEME.css" "$HOME/.config/swaync/style.css"
+    fi
+    
+    # 5. Rofi themes
     if [ -d "$HOME/.config/rofi/themes" ]; then
         # Launcher
         if [ -f "$HOME/.config/rofi/themes/launcher-$THEME.rasi" ]; then
@@ -65,12 +72,40 @@ apply_theme() {
         fi
     fi
     
+    # 6. Save theme for SDDM (world-readable) - with error handling
+    if echo "$THEME" > "$SDDM_THEME_FILE" 2>/dev/null; then
+        chmod 644 "$SDDM_THEME_FILE" 2>/dev/null || true
+    fi
+    
+    # 7. Copy current wallpaper for SDDM - with error handling
+    if [ -f "$HOME/.cache/current_wallpaper" ]; then
+        WALLPAPER_PATH=$(cat "$HOME/.cache/current_wallpaper" 2>/dev/null || echo "")
+        if [ -n "$WALLPAPER_PATH" ] && [ -f "$WALLPAPER_PATH" ]; then
+            if cp "$WALLPAPER_PATH" "$SDDM_WALLPAPER" 2>/dev/null; then
+                chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
+            fi
+        fi
+    fi
+    
     # Save current theme
     echo "$THEME" > "$CURRENT_THEME_FILE"
     
-    # Reload everything
-    hyprctl reload
-    pkill waybar && sleep 0.2 && waybar &
+    # Reload everything with error handling
+    hyprctl reload 2>/dev/null || true
+    
+    # Restart waybar
+    if pgrep -x waybar >/dev/null 2>&1; then
+        pkill -x waybar
+        sleep 0.2
+    fi
+    waybar &
+    
+    # Restart swaync
+    if pgrep -x swaync >/dev/null 2>&1; then
+        pkill -x swaync
+        sleep 0.2
+    fi
+    swaync &
     
     notify-send "Theme Applied" "Switched to $THEME theme" \
         --urgency=low \

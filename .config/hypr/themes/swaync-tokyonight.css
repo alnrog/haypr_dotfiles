@@ -1,0 +1,119 @@
+/* SwayNC - Tokyo Night Theme */
+
+* {
+  font-family: "JetBrains Mono", sans-serif;
+  color: #c0caf5;
+}
+
+.notification {
+  background: #1a1b26;
+  border-radius: 10px;
+  border: 2px solid #7aa2f7;
+  padding: 10px;
+  margin: 5px;
+}
+
+.control-center {
+  background: #1a1b26;
+  border: 2px solid #7aa2f7;
+  border-radius: 10px;
+}
+
+.notification-body {
+  color: #c0caf5;
+}
+
+.notification-title {
+  color: #7aa2f7;
+  font-weight: bold;
+}
+
+.notification-app-name {
+  color: #bb9af7;
+  font-size: 0.9em;
+}
+
+.notification-time {
+  color: #a9b1d6;
+  font-size: 0.8em;
+}
+
+.close-button {
+  background: #24283b;
+  color: #c0caf5;
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+  margin: 5px;
+}
+
+.close-button:hover {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+.notification-action {
+  background: #24283b;
+  color: #c0caf5;
+  border-radius: 5px;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.notification-action:hover {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+.critical {
+  border-color: #f7768e;
+}
+
+.control-center-header {
+  background: #24283b;
+  color: #c0caf5;
+  padding: 10px;
+  border-radius: 10px 10px 0 0;
+}
+
+.control-center-dnd {
+  background: #24283b;
+  color: #c0caf5;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-dnd:checked {
+  background: #7aa2f7;
+  color: #1a1b26;
+}
+
+.control-center-clear-all {
+  background: #24283b;
+  color: #c0caf5;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.control-center-clear-all:hover {
+  background: #f7768e;
+  color: #c0caf5;
+}
+
+.widget-title {
+  color: #7aa2f7;
+  font-weight: bold;
+}
+
+scrollbar {
+  background: #24283b;
+  border-radius: 5px;
+}
+
+slider {
+  background: #7aa2f7;
+  border-radius: 5px;
+}

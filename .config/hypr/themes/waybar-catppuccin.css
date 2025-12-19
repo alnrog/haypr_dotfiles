@@ -35,8 +35,16 @@ window#waybar {
 }
 
 #workspaces button.active {
-  background: #cba6f7;
+  background: transparent;
   color: #1e1e2e;
+  border: 2px solid #cba6f7;
+  font-weight: bold;
+}
+
+#workspaces button:hover {
+  background: #cba6f7;
+  color: #cba6f7;
+  border: 2px solid #cba6f7;
 }
 
 #clock,
