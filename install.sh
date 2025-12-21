@@ -39,6 +39,9 @@ PACKAGES=(
     "hyprlock"
     "hypridle"
     "xdg-desktop-portal-hyprland"
+    "sddm"
+    "qt6-svg"
+    "qt6-declarative"
     
     # Waybar и компоненты
     "waybar"
@@ -111,6 +114,10 @@ echo ""
 echo -e "${GREEN}Включаем сервисы...${NC}"
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
+
+echo ""
+echo -e "${GREEN}Включаем SDDM...${NC}"
+sudo systemctl enable sddm.service
 
 echo ""
 echo -e "${GREEN}Готово!${NC}"
