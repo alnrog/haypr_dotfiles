@@ -6,8 +6,9 @@ set -euo pipefail
 
 THEMES_DIR="$HOME/.config/hypr/themes"
 CURRENT_THEME_FILE="$HOME/.cache/current_theme"
-SDDM_THEME_FILE="/tmp/hyprland-current-theme"
-SDDM_WALLPAPER="/tmp/hyprland-current-wallpaper.jpg"
+SDDM_DIR="$HOME/.local/share/sddm"
+SDDM_THEME_FILE="$SDDM_DIR/theme"
+SDDM_WALLPAPER="$SDDM_DIR/wallpaper.jpg"
 
 # Available themes
 THEMES=("nord" "catppuccin" "tokyonight" "gruvbox")
@@ -70,27 +71,31 @@ apply_theme() {
         if [ -f "$HOME/.config/rofi/themes/clipboard-$THEME.rasi" ]; then
             ln -sf "$HOME/.config/rofi/themes/clipboard-$THEME.rasi" "$HOME/.config/rofi/clipboard.rasi"
         fi
+        
+        # Window switcher
+        if [ -f "$HOME/.config/rofi/themes/window-$THEME.rasi" ]; then
+            ln -sf "$HOME/.config/rofi/themes/window-$THEME.rasi" "$HOME/.config/rofi/window.rasi"
+        fi
     fi
     
-    # 6. Save theme for SDDM (world-readable) - with error handling
-    if echo "$THEME" > "$SDDM_THEME_FILE" 2>/dev/null; then
-        chmod 644 "$SDDM_THEME_FILE" 2>/dev/null || true
-    fi
+    # 6. Save theme for SDDM - просто echo в файл
+    mkdir -p "$SDDM_DIR"
+    echo "$THEME" > "$SDDM_THEME_FILE"
+    chmod 644 "$SDDM_THEME_FILE" 2>/dev/null || true
     
-    # 7. Copy current wallpaper for SDDM - with error handling
+    # 7. Copy current wallpaper for SDDM
     if [ -f "$HOME/.cache/current_wallpaper" ]; then
         WALLPAPER_PATH=$(cat "$HOME/.cache/current_wallpaper" 2>/dev/null || echo "")
         if [ -n "$WALLPAPER_PATH" ] && [ -f "$WALLPAPER_PATH" ]; then
-            if cp "$WALLPAPER_PATH" "$SDDM_WALLPAPER" 2>/dev/null; then
-                chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
-            fi
+            cp "$WALLPAPER_PATH" "$SDDM_WALLPAPER" 2>/dev/null || true
+            chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
         fi
     fi
     
     # Save current theme
     echo "$THEME" > "$CURRENT_THEME_FILE"
     
-    # Reload everything with error handling
+    # Reload everything
     hyprctl reload 2>/dev/null || true
     
     # Restart waybar
@@ -114,7 +119,6 @@ apply_theme() {
 
 case "$ACTION" in
     menu)
-        # Show rofi menu with current theme highlighted
         current_index=0
         for i in "${!THEMES[@]}"; do
             if [ "${THEMES[$i]}" = "$CURRENT_THEME" ]; then
@@ -140,7 +144,6 @@ case "$ACTION" in
         ;;
     
     next)
-        # Get current index
         current_index=0
         for i in "${!THEMES[@]}"; do
             if [ "${THEMES[$i]}" = "$CURRENT_THEME" ]; then
@@ -149,7 +152,6 @@ case "$ACTION" in
             fi
         done
         
-        # Get next theme
         next_index=$(( (current_index + 1) % ${#THEMES[@]} ))
         next_theme="${THEMES[$next_index]}"
         

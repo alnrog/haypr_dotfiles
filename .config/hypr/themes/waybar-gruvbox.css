@@ -101,3 +101,58 @@ window#waybar {
 #tray {
   margin-left: 10px;
 }
+
+#custom-keyboard {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #3c3836;
+  color: #ebdbb2;
+  font-weight: bold;
+  min-width: 28px;
+}
+
+#custom-keyboard.russian:hover {
+  background: #8b3a3a;
+  color: #ebdbb2;
+}
+
+#custom-keyboard.english:hover {
+  background: #3a5a8b;
+  color: #ebdbb2;
+}
+
+/* Battery - Gruvbox */
+#battery {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #3c3836;
+}
+
+#battery.good {
+  color: #b8bb26;
+}
+
+#battery.good:hover {
+  background: #b8bb26;
+  color: #282828;
+}
+
+#battery.warning {
+  color: #fabd2f;
+}
+
+#battery.warning:hover {
+  background: #fabd2f;
+  color: #282828;
+}
+
+#battery.critical {
+  color: #fb4934;
+}
+
+#battery.critical:hover {
+  background: #fb4934;
+  color: #282828;
+}

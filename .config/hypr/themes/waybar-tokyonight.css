@@ -101,3 +101,58 @@ window#waybar {
 #tray {
   margin-left: 10px;
 }
+
+#custom-keyboard {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #24283b;
+  color: #c0caf5;
+  font-weight: bold;
+  min-width: 28px;
+}
+
+#custom-keyboard.russian:hover {
+  background: #8b3a3a;
+  color: #c0caf5;
+}
+
+#custom-keyboard.english:hover {
+  background: #3a5a8b;
+  color: #c0caf5;
+}
+
+/* Battery - Tokyo Night */
+#battery {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #24283b;
+}
+
+#battery.good {
+  color: #9ece6a;
+}
+
+#battery.good:hover {
+  background: #9ece6a;
+  color: #1a1b26;
+}
+
+#battery.warning {
+  color: #e0af68;
+}
+
+#battery.warning:hover {
+  background: #e0af68;
+  color: #1a1b26;
+}
+
+#battery.critical {
+  color: #f7768e;
+}
+
+#battery.critical:hover {
+  background: #f7768e;
+  color: #1a1b26;
+}

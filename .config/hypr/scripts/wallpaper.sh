@@ -1,23 +1,21 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Wallpaper switcher for swww with state persistence
-# Usage: 
-#   ./wallpaper.sh random    - set random wallpaper
-#   ./wallpaper.sh next      - next wallpaper
-#   ./wallpaper.sh prev      - previous wallpaper
-#   ./wallpaper.sh <path>    - set specific wallpaper
+# Wallpaper switcher для swww с сохранением для SDDM
 
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 CACHE_FILE="$HOME/.cache/current_wallpaper"
+SDDM_DIR="$HOME/.local/share/sddm"
+SDDM_WALLPAPER="$SDDM_DIR/wallpaper.jpg"
 
 # Transition effects
-TRANSITION_TYPE="fade"  # wave, simple, fade, wipe, outer, random
+TRANSITION_TYPE="fade"
 TRANSITION_DURATION=2
 
-# Create wallpaper directory if it doesn't exist
+# Create directories
 mkdir -p "$WALLPAPER_DIR"
 mkdir -p "$(dirname "$CACHE_FILE")"
+mkdir -p "$SDDM_DIR"
 
 # Get list of wallpapers
 mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | sort)
@@ -53,11 +51,9 @@ set_wallpaper() {
     # Save current wallpaper path
     echo "$wallpaper" > "$CACHE_FILE"
     
-    # Copy for SDDM (with error handling)
-    if [ -w /tmp ]; then
-        cp "$wallpaper" /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
-        chmod 644 /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
-    fi
+    # Copy for SDDM (просто cp, без sudo!)
+    cp "$wallpaper" "$SDDM_WALLPAPER" 2>/dev/null || true
+    chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
     
     local filename=$(basename "$wallpaper")
     notify-send "Wallpaper changed" "$filename" \
@@ -68,27 +64,23 @@ set_wallpaper() {
 
 case "${1:-random}" in
     random)
-        # Random wallpaper
         random_index=$((RANDOM % ${#WALLPAPERS[@]}))
         set_wallpaper "${WALLPAPERS[$random_index]}"
         ;;
     
     next)
-        # Next wallpaper
         current_index=$(get_current_index)
         next_index=$(( (current_index + 1) % ${#WALLPAPERS[@]} ))
         set_wallpaper "${WALLPAPERS[$next_index]}"
         ;;
     
     prev)
-        # Previous wallpaper
         current_index=$(get_current_index)
         prev_index=$(( (current_index - 1 + ${#WALLPAPERS[@]}) % ${#WALLPAPERS[@]} ))
         set_wallpaper "${WALLPAPERS[$prev_index]}"
         ;;
     
     *)
-        # Specific wallpaper path
         if [ -f "$1" ]; then
             set_wallpaper "$1"
         else

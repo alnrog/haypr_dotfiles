@@ -20,28 +20,6 @@
   color: #1e1e2e;
 }
 
-/* --- Workspace Icons --- */
-#custom-workspaces {
-  padding: 0 4px;
-  margin: 6px 3px;
-  border-radius: 8px;
-}
-
-#custom-workspaces .active {
-  color: #88c0d0;
-  border: 2px solid #88c0d0;
-  background: transparent;
-  padding: 0 6px;
-  border-radius: 10px;
-}
-
-#custom-workspaces .inactive {
-  color: #eceff4;
-  background: #2a2a3a;
-  padding: 0 6px;
-  border-radius: 10px;
-}
-
 window#waybar {
   background: #1e1e2e;
   border: 2px solid #88c0d0;
@@ -121,4 +99,69 @@ window#waybar {
 
 #tray {
   margin-left: 10px;
+}
+
+#custom-keyboard {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #2a2a3a;
+  color: #eceff4;
+  font-weight: bold;
+  min-width: 28px;
+}
+
+#custom-keyboard.russian {
+  background: #2a2a3a;
+  color: #eceff4;
+}
+
+#custom-keyboard.russian:hover {
+  background: #8b3a3a;  /* Тёмно-красный */
+  color: #eceff4;
+}
+
+#custom-keyboard.english {
+  background: #2a2a3a;
+  color: #eceff4;
+}
+
+#custom-keyboard.english:hover {
+  background: #3a5a8b;  /* Тёмно-синий */
+  color: #eceff4;
+}
+
+/* Battery - Nord */
+#battery {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #2a2a3a;
+}
+
+#battery.good {
+  color: #a3be8c;
+}
+
+#battery.good:hover {
+  background: #a3be8c;
+  color: #1e1e2e;
+}
+
+#battery.warning {
+  color: #ebcb8b;
+}
+
+#battery.warning:hover {
+  background: #ebcb8b;
+  color: #1e1e2e;
+}
+
+#battery.critical {
+  color: #bf616a;
+}
+
+#battery.critical:hover {
+  background: #bf616a;
+  color: #1e1e2e;
 }

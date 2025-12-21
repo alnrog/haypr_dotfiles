@@ -4,9 +4,9 @@
   "height": 38,
   "margin": "6 6 0 6",
 
-  "modules-left": ["custom/arch", "hyprland/workspaces", "custom/workspaces", "hyprland/window"],
+  "modules-left": ["custom/arch", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
-  "modules-right": ["cpu", "memory", "temperature", "pulseaudio", "network", "bluetooth", "tray", "custom/power"],
+  "modules-right": ["battery", "cpu", "memory", "temperature", "pulseaudio", "network", "bluetooth", "tray", "custom/keyboard", "custom/power"],
 
   "custom/arch": {
     "format": "",
@@ -15,20 +15,48 @@
   },
 
   "hyprland/workspaces": {
-    "disable-scroll": false
-  },
-
-  "custom/workspaces": {
-    "exec": "~/.config/waybar/scripts/workspaces-icons.sh",
-    "interval": 2,
-    "format": "{}"
+    "format": "{name}",
+    "disable-scroll": false,
+    "on-click": "activate",
+    "sort-by-number": true
   },
 
   "clock": {
-    "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%d.%m.%Y - %H:%M}",
+    "locale": "ru_RU.UTF-8",
+    "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      "weeks-pos": "",
+      "on-scroll": 1,
+      "format": {
+        "months": "<span color='#88c0d0'><b>{}</b></span>",
+        "days": "<span color='#eceff4'><b>{}</b></span>",
+        "weekdays": "<span color='#88c0d0'><b>{}</b></span>",
+        "today": "<span color='#bf616a'><b><u>{}</u></b></span>"
+      }
+    },
     "on-click": "~/.config/hypr/scripts/rofi-calendar.sh"
   },
+
+"battery": {
+  "interval": 10,
+  "states": {
+    "critical": 15,
+    "warning": 30,
+    "good": 100
+  },
+  "format": "{icon} {capacity}%",
+  "format-charging": "󰂄 {capacity}%",
+  "format-plugged": "󰚥 {capacity}%",
+  "format-full": "󰁹 {capacity}%",
+  "format-icons": ["󰁾", "󰁾", "󰁿", "󰁿", "󰂀", "󰂀", "󰂀", "󰂁", "󰂁", "󰁹"],
+  "tooltip-format": "Заряд: {capacity}%",
+  "tooltip-format-charging": "Заряжается: {capacity}%",
+  "tooltip-format-plugged": "Питание от сети",
+  "tooltip-format-full": "Батарея полная • Питание от сети"
+},
 
   "cpu": {
     "interval": 5,
@@ -65,6 +93,7 @@
     "format-icons": ["󰤯","󰤟","󰤢","󰤥","󰤨"],
     "format-ethernet": "󰈀",
     "format-disconnected": "󰤭",
+    "format-off": "",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)",
     "tooltip-format-ethernet": "Ethernet",
     "tooltip-format-disconnected": "Disconnected",
@@ -80,10 +109,17 @@
     "on-click": "blueman-manager"
   },
 
+  "custom/keyboard": {
+    "exec": "~/.config/waybar/scripts/keyboard-layout.sh",
+    "return-type": "json",
+    "format": "{}",
+    "on-click": "~/.config/hypr/scripts/switch-keyboard.sh",
+    "on-click-right": "~/.config/hypr/scripts/switch-keyboard.sh"
+  },
+
   "custom/power": {
     "format": "⏻",
     "tooltip": "Power",
     "on-click": "~/.config/hypr/scripts/powermenu.sh"
   }
 }
-

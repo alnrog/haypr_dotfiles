@@ -102,3 +102,58 @@ window#waybar {
 #tray {
   margin-left: 10px;
 }
+
+#custom-keyboard {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #313244;
+  color: #cdd6f4;
+  font-weight: bold;
+  min-width: 28px;
+}
+
+#custom-keyboard.russian:hover {
+  background: #8b3a3a;
+  color: #cdd6f4;
+}
+
+#custom-keyboard.english:hover {
+  background: #3a5a8b;
+  color: #cdd6f4;
+}
+
+/* Battery - Catppuccin */
+#battery {
+  padding: 0 10px;
+  margin: 6px 4px;
+  border-radius: 10px;
+  background: #313244;
+}
+
+#battery.good {
+  color: #a6e3a1;
+}
+
+#battery.good:hover {
+  background: #a6e3a1;
+  color: #1e1e2e;
+}
+
+#battery.warning {
+  color: #f9e2af;
+}
+
+#battery.warning:hover {
+  background: #f9e2af;
+  color: #1e1e2e;
+}
+
+#battery.critical {
+  color: #f38ba8;
+}
+
+#battery.critical:hover {
+  background: #f38ba8;
+  color: #1e1e2e;
+}

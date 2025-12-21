@@ -6,6 +6,7 @@ set -euo pipefail
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 CACHE_FILE="$HOME/.cache/current_wallpaper"
 DEFAULT_WALLPAPER="$WALLPAPER_DIR/default.jpg"
+SDDM_WALLPAPER="$HOME/.local/share/sddm/wallpaper.jpg"
 
 # Kill existing swww daemon if running
 pkill -x swww-daemon 2>/dev/null || true
@@ -26,8 +27,9 @@ if [ -f "$CACHE_FILE" ]; then
             --transition-duration 1
         
         # Copy for SDDM
-        cp "$LAST_WALLPAPER" /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
-        chmod 644 /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
+        mkdir -p "$(dirname "$SDDM_WALLPAPER")"
+        cp "$LAST_WALLPAPER" "$SDDM_WALLPAPER" 2>/dev/null || true
+        chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
         
         exit 0
     fi
@@ -40,8 +42,9 @@ if [ -f "$DEFAULT_WALLPAPER" ]; then
         --transition-duration 1
     
     echo "$DEFAULT_WALLPAPER" > "$CACHE_FILE"
-    cp "$DEFAULT_WALLPAPER" /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
-    chmod 644 /tmp/hyprland-current-wallpaper.jpg 2>/dev/null || true
+    mkdir -p "$(dirname "$SDDM_WALLPAPER")"
+    cp "$DEFAULT_WALLPAPER" "$SDDM_WALLPAPER" 2>/dev/null || true
+    chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
 else
     # No wallpaper found - use solid color
     swww img <(convert -size 1920x1080 xc:"#1e1e2e" png:-) \

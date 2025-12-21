@@ -56,10 +56,13 @@ PACKAGES=(
     "kitty"
     
     # Файловый менеджер
-    "dolphin"
+    "thunar"
+    "thunar-volman"
+    "gvfs"
+    "polkit-gnome"
     
     # Лаунчер
-    "wofi"
+    "rofi"
     
     # Bluetooth
     "bluez"
@@ -80,11 +83,19 @@ PACKAGES=(
     "jq"
     "libnotify"
     "brightnessctl"
+    "playerctl"
+    "socat"
+    "swww"
     
     # Шрифты
     "ttf-font-awesome"
     "ttf-jetbrains-mono-nerd"
+    "noto-fonts"
     "noto-fonts-emoji"
+
+    #Темы
+    "gnome-themes-extra"
+    "adwaita-icon-theme"
 )
 
 for package in "${PACKAGES[@]}"; do

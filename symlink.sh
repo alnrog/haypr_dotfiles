@@ -37,7 +37,7 @@ backup_if_exists() {
 mkdir -p "$CONFIG_DIR"
 
 # Массив конфигов для линковки
-configs=("hypr" "waybar" "swaync" "wofi" "kitty" "rofi" "networkmanager-dmenu")
+configs=("gtk-3.0" "gtk-4.0" "hypr" "waybar" "swaync" "kitty" "rofi" "networkmanager-dmenu")
 
 echo -e "${GREEN}Создаём симлинки...${NC}"
 

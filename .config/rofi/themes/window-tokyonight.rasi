@@ -1,0 +1,94 @@
+/*******************************************************************************
+ * Rofi Window Switcher - Tokyo Night
+ ******************************************************************************/
+
+* {
+    bg:           #1a1b26;
+    bg-alt:       #24283b;
+    fg:           #c0caf5;
+    fg-alt:       #a9b1d6;
+    accent:       #7aa2f7;
+    urgent:       #f7768e;
+
+    background-color: transparent;
+    text-color: @fg;
+    font: "JetBrains Mono 11";
+}
+
+window {
+    location: center;
+    width: 800;
+    background-color: @bg;
+    border: 2px solid;
+    border-color: @accent;
+    border-radius: 12px;
+}
+
+mainbox {
+    background-color: transparent;
+    children: [ inputbar, listview ];
+    spacing: 10px;
+    padding: 15px;
+}
+
+inputbar {
+    padding: 10px;
+    spacing: 10px;
+    background-color: @bg-alt;
+    border-radius: 8px;
+    children: [prompt, entry];
+}
+
+prompt {
+    text-color: @accent;
+    font: "JetBrains Mono Bold 11";
+}
+
+entry {
+    placeholder: "Search windows...";
+    placeholder-color: @fg-alt;
+}
+
+listview {
+    background-color: transparent;
+    columns: 1;
+    lines: 8;
+    spacing: 4px;
+    scrollbar: false;
+}
+
+element {
+    background-color: transparent;
+    text-color: @fg;
+    padding: 8px 10px;
+    border-radius: 8px;
+}
+
+element-icon {
+    size: 24px;
+    margin: 0 10px 0 0;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+}
+
+element normal.normal {
+    background-color: transparent;
+}
+
+element selected.normal {
+    background-color: @accent;
+    text-color: @bg;
+}
+
+element normal.urgent {
+    background-color: transparent;
+    text-color: @urgent;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @bg;
+}
