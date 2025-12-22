@@ -1,132 +1,217 @@
 # 🎨 Hyprland Dotfiles
 
-Мои конфигурационные файлы для Hyprland на Arch Linux.
+[English](README.md) | [Русский](README.ru.md)
 
-## 🖥️ Информация о системе
+My personal **Hyprland configuration for Arch Linux** with dynamic themes, custom scripts, and deep system-wide customization.
 
-- **ОС**: Arch Linux
-- **WM**: Hyprland 0.52.2
-- **Терминал**: Kitty
-- **Панель**: Waybar
-- **Уведомления**: SwayNC
-- **Лаунчер**: Wofi
-- **Файловый менеджер**: Dolphin
-
-## 📦 Компоненты
-
-- **Hyprland** - Динамичный тайловый композитор Wayland
-- **Waybar** - Настраиваемая панель для Wayland
-- **SwayNC** - Центр уведомлений
-- **Wofi** - Лаунчер приложений
-- **Cliphist** - История буфера обмена
-- **Grim + Slurp** - Скриншоты
-- **Hyprlock** - Блокировка экрана
-
-## 🚀 Установка
-
-### Автоматическая установка
-
-```bash
-# Клонируем репозиторий
-git clone https://github.com/ТВОЙ_USERNAME/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-
-# Устанавливаем пакеты (опционально)
-chmod +x install.sh
-./install.sh
-
-# Создаём символические ссылки
-chmod +x symlink.sh
-./symlink.sh
-```
-
-### Ручная установка
-
-```bash
-# Клонируем репозиторий
-git clone https://github.com/ТВОЙ_USERNAME/dotfiles.git ~/dotfiles
-
-# Создаём симлинки вручную
-ln -sf ~/dotfiles/.config/hypr ~/.config/hypr
-ln -sf ~/dotfiles/.config/waybar ~/.config/waybar
-ln -sf ~/dotfiles/.config/swaync ~/.config/swaync
-ln -sf ~/dotfiles/.config/wofi ~/.config/wofi
-ln -sf ~/dotfiles/.config/kitty ~/.config/kitty
-```
-
-## ⌨️ Основные горячие клавиши
-
-| Клавиши | Действие |
-|---------|----------|
-| `SUPER + Return` | Открыть терминал |
-| `SUPER + D` | Запустить wofi |
-| `SUPER + E` | Файловый менеджер |
-| `SUPER + Q` | Закрыть окно |
-| `SUPER + V` | История буфера обмена |
-| `SUPER + L` | Заблокировать экран |
-| `Print` | Скриншот |
-| `SUPER + H/J/K/L` | Навигация (vim-style) |
-| `SUPER + SHIFT + H/J/K/L` | Переместить окно |
-| `SUPER + 1-9` | Переключить воркспейс |
-| `SUPER + SHIFT + 1-9` | Переместить окно на воркспейс |
-| `SUPER + F` | Полноэкранный режим |
-| `SUPER + Space` | Переключить плавающий режим |
-
-## 🎨 Кастомизация
-
-### Мониторы
-Отредактируй `.config/hypr/monitors.conf` для настройки своих мониторов.
-
-### Тема
-Цвета и стили находятся в `.config/hypr/theme.conf`.
-
-### Автозапуск
-Приложения для автозапуска в `.config/hypr/autostart.conf`.
-
-## 📝 Структура
-
-```
-dotfiles/
-├── .config/
-│   ├── hypr/           # Конфигурация Hyprland
-│   │   ├── hyprland.conf      # Главный файл
-│   │   ├── animations.conf    # Анимации
-│   │   ├── autostart.conf     # Автозапуск
-│   │   ├── binds.conf         # Горячие клавиши
-│   │   ├── decoration.conf    # Декорации
-│   │   ├── env.conf           # Переменные окружения
-│   │   ├── general.conf       # Основные настройки
-│   │   ├── input.conf         # Устройства ввода
-│   │   ├── monitors.conf      # Настройки мониторов
-│   │   ├── rules.conf         # Правила для окон
-│   │   ├── theme.conf         # Тема и цвета
-│   │   └── scripts/           # Вспомогательные скрипты
-│   ├── waybar/         # Конфигурация панели
-│   ├── swaync/         # Уведомления
-│   ├── wofi/           # Лаунчер
-│   └── kitty/          # Терминал
-├── install.sh          # Установка пакетов
-├── symlink.sh          # Создание симлинков
-└── README.md
-```
-
-## 🐛 Известные проблемы
-
-- На NVIDIA может потребоваться дополнительная настройка драйверов
-- При первом запуске waybar может потребоваться ручной перезапуск
-
-## 🤝 Благодарности
-
-Вдохновлено конфигами:
-- [Andrey0189/arch-dotfiles](https://github.com/Andrey0189/arch-dotfiles)
-- [mylinuxforwork/dotfiles](https://github.com/mylinuxforwork/dotfiles)
-
-## 📄 Лицензия
-
-MIT License
+![Hyprland](https://img.shields.io/badge/Hyprland-0.52.2-blue)
+![Waybar](https://img.shields.io/badge/Waybar-0.14.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-**Заметки:**
-- Перед применением конфигов создай бэкап своих текущих настроек
-- Некоторые настройки (мониторы, устройства ввода) могут потребовать адаптации под твоё железо
+## 📸 Screenshots
+
+![Nord Theme](screenshots/nord.png)
+![Catppuccin Theme](screenshots/catppuccin.png)
+![Tokyo Night Theme](screenshots/tokyonight.png)
+![GruvBox Theme](screenshots/gruvbox.png)
+![Apps menu (rofi launcher)](screenshots/launcher.png)
+![Power Menu](screenshots/powermenu.png)
+![Windows](screenshots/windows.png)
+
+---
+
+## 🖥️ System Information
+
+* **OS**: Arch Linux
+* **WM**: Hyprland 0.52.2
+* **Terminal**: Kitty
+* **Panel**: Waybar
+* **Notifications**: SwayNC
+* **Launcher**: Rofi (Wayland)
+* **File Manager**: Thunar
+* **Screen Lock**: Hyprlock
+* **Display Manager**: SDDM (with custom theme)
+
+---
+
+## ✨ Features
+
+### 🎨 Dynamic Theme Switching
+
+* **4 color schemes**: Nord, Catppuccin Mocha, Tokyo Night, Gruvbox
+* **Unified theme switching** updates:
+
+  * Hyprland colors and borders
+  * Waybar styles
+  * Rofi menus (launcher, power menu, clipboard, calendar, window switcher)
+  * SwayNC notifications
+  * Hyprlock lock screen
+  * SDDM login screen
+* **Keybindings**:
+
+  * `SUPER + T` — theme menu
+  * `SUPER + SHIFT + T` — cycle themes
+
+### 🪟 Window Management
+
+* Dynamic workspace indicators with application icons
+* Window switcher: `SUPER + Tab` (Rofi)
+* Smart window rules (browser → workspace, dialogs → floating)
+* Subtle transparency for inactive windows (92%)
+
+### 🔔 Notifications & Status Bar
+
+* Custom Waybar modules:
+
+  * CPU & memory (click opens `btop`)
+  * Temperature monitoring
+  * Network (WiFi / Ethernet)
+  * Keyboard layout indicator (EN / RU)
+  * Battery with color-coded levels
+  * Bluetooth status
+  * Volume & brightness
+* Notification center: `SUPER + N`
+* Calendar widget on clock click
+
+### 🎵 Multimedia
+
+* Volume & brightness OSD
+* Media player integration
+* Hardware media keys support
+
+### 🖼️ Wallpaper Management
+
+* Dynamic wallpapers via **SWWW**
+* Wallpaper persistence
+* SDDM uses current wallpaper
+* Keybindings:
+
+  * `SUPER + W` — next
+  * `SUPER + SHIFT + W` — previous
+  * `SUPER + CTRL + W` — random
+
+### ⌨️ Keyboard Layout
+
+* English / Russian (`Alt + Shift`)
+* Visual indicator in Waybar
+* Color-coded state
+
+### 📋 Clipboard & Screenshots
+
+* Clipboard history: `SUPER + V`
+* Screenshots:
+
+  * `Print` — full screen
+  * `Shift + Print` — area
+  * `Ctrl + Print` — active window
+* Saved to `~/Pictures/Screenshots/`
+
+### 🔒 Security & Power Management
+
+* Hyprlock with blur and theming
+* Polkit authentication agent
+* Hypridle:
+
+  * Dim: 4 min
+  * Screen off: 5 min
+  * Auto-lock: 5 min
+
+---
+
+## 📦 Components & Dependencies
+
+### Core
+
+* `hyprland`, `hyprlock`, `hypridle`, `xdg-desktop-portal-hyprland`
+
+### UI
+
+* `waybar`, `swaync`, `rofi`
+
+### File Management
+
+* `thunar`, `thunar-volman`, `gvfs`
+
+### Utilities
+
+* `kitty`, `wl-clipboard`, `cliphist`, `grim`, `slurp`, `swww`, `playerctl`, `brightnessctl`, `socat`
+
+### System
+
+* `polkit-gnome`, `networkmanager`, `nm-connection-editor`, `bluez`, `bluez-utils`, `blueman`
+* `pipewire`, `pipewire-pulse`, `wireplumber`, `pavucontrol`
+
+### Fonts
+
+* `ttf-jetbrains-mono-nerd`, `ttf-font-awesome`, `noto-fonts`, `noto-fonts-emoji`
+
+### Themes
+
+* `gnome-themes-extra`, `adwaita-icon-theme`
+
+---
+
+## 🚀 Installation
+
+```bash
+git clone https://github.com/alnrog/hypr_dotfiles.git ~/dotfiles
+cd ~/dotfiles
+
+chmod +x install.sh
+./install.sh
+
+chmod +x symlink.sh
+./symlink.sh
+
+# Optional SDDM integration
+chmod +x setup-sddm-links.sh
+./setup-sddm-links.sh
+```
+
+Log out and start Hyprland.
+
+---
+
+## ⌨️ Keybindings (Highlights)
+
+| Keys                | Action          |
+| ------------------- | --------------- |
+| `SUPER + Return`    | Terminal        |
+| `SUPER + D`         | App launcher    |
+| `SUPER + E`         | File manager    |
+| `SUPER + Q`         | Close window    |
+| `SUPER + Shift + Q` | Exit Hyprland   |
+| `SUPER + Esc`       | Power menu      |
+| `SUPER + Tab`       | Window switcher |
+| `SUPER + V`         | Clipboard       |
+| `SUPER + N`         | Notifications   |
+| `SUPER + T`         | Theme menu      |
+
+---
+
+## 📁 Project Structure
+
+```text
+.config/
+├── hypr/
+├── waybar/
+├── rofi/
+├── swaync/
+├── kitty/
+├── gtk-3.0/
+├── gtk-4.0/
+└── networkmanager-dmenu/
+```
+
+---
+
+## 📄 License
+
+MIT License — see [LICENSE](LICENSE).
+
+---
+
+👤 **Author**: Alnrog
+📬 **Contact**: [https://t.me/pen_in_nostril](https://t.me/pen_in_nostril)

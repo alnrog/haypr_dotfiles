@@ -3,6 +3,8 @@
 
 set -e
 
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 # Цвета
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -118,6 +120,20 @@ sudo systemctl start bluetooth.service
 echo ""
 echo -e "${GREEN}Включаем SDDM...${NC}"
 sudo systemctl enable sddm.service
+
+echo ""
+echo -e "${GREEN}Создаём структуру директорий...${NC}"
+mkdir -p "$HOME/Pictures"
+mkdir -p "$HOME/Pictures/Screenshots"
+
+echo ""
+echo -e "${GREEN}Создаём симлинк для обоев...${NC}"
+if [ ! -e "$HOME/Pictures/Wallpapers" ]; then
+    ln -sf "$DOTFILES_DIR/Wallpapers" "$HOME/Pictures/Wallpapers"
+    echo -e "${GREEN}✓ Симлинк создан: ~/Pictures/Wallpapers -> ~/dotfiles/Wallpapers${NC}"
+else
+    echo -e "${YELLOW}⊙ ~/Pictures/Wallpapers уже существует${NC}"
+fi
 
 echo ""
 echo -e "${GREEN}Готово!${NC}"
