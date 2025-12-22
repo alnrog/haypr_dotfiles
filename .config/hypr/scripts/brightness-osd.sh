@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Brightness OSD with visual notification
-# Shows brightness level with progress bar
+# Load translations
+source ~/.config/hypr/scripts/locale.sh
 
-ACTION="${1:-up}"  # up, down
+# Brightness OSD with visual notification
+ACTION="${1:-up}"
 
 case "$ACTION" in
     up)
@@ -30,7 +31,7 @@ EMPTY=$((BAR_LENGTH - FILLED))
 BAR=$(printf '█%.0s' $(seq 1 $FILLED))$(printf '░%.0s' $(seq 1 $EMPTY))
 
 # Send notification
-notify-send "$ICON Яркость: ${PERCENT}%" "$BAR" \
+notify-send "$ICON $(t "brightness"): ${PERCENT}%" "$BAR" \
     --urgency=low \
     --expire-time=2000 \
     --hint=string:x-canonical-private-synchronous:brightness

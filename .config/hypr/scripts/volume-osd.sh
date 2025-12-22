@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Volume OSD with visual notification
-# Shows volume level with progress bar
+# Load translations
+source ~/.config/hypr/scripts/locale.sh
 
-ACTION="${1:-up}"  # up, down, mute
+# Volume OSD with visual notification
+ACTION="${1:-up}"
 
 case "$ACTION" in
     up)
@@ -25,7 +26,7 @@ MUTED=$(wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep -q "MUTED" && echo "yes" ||
 # Icon based on volume level
 if [ "$MUTED" = "yes" ]; then
     ICON="󰖁"
-    TEXT="Звук выключен"
+    TEXT="$(t "muted")"
 else
     if [ "$VOLUME" -ge 70 ]; then
         ICON="󰕾"
@@ -34,7 +35,7 @@ else
     else
         ICON="󰕿"
     fi
-    TEXT="Громкость: ${VOLUME}%"
+    TEXT="$(t "volume"): ${VOLUME}%"
 fi
 
 # Create progress bar

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+source ~/.config/hypr/scripts/locale.sh
+
 # Wallpaper switcher для swww с сохранением для SDDM
 
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
@@ -21,7 +23,7 @@ mkdir -p "$SDDM_DIR"
 mapfile -t WALLPAPERS < <(find "$WALLPAPER_DIR" -type f \( -iname "*.jpg" -o -iname "*.jpeg" -o -iname "*.png" \) | sort)
 
 if [ ${#WALLPAPERS[@]} -eq 0 ]; then
-    notify-send "Wallpaper" "No wallpapers found in $WALLPAPER_DIR" --urgency=critical
+    notify-send "$(t "wallpaper")" "$(t "no_wallpapers") $WALLPAPER_DIR" --urgency=critical
     exit 1
 fi
 
@@ -56,7 +58,7 @@ set_wallpaper() {
     chmod 644 "$SDDM_WALLPAPER" 2>/dev/null || true
     
     local filename=$(basename "$wallpaper")
-    notify-send "Wallpaper changed" "$filename" \
+    notify-send "$(t "wallpaper_changed")" "$filename" \
         --icon="$wallpaper" \
         --urgency=low \
         --expire-time=2000

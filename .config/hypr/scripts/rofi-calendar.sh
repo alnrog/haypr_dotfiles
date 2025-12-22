@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Load translations
+source ~/.config/hypr/scripts/locale.sh
+
 # Rofi Calendar - Three Button Navigation
 
 CACHE_DIR="$HOME/.cache/rofi-calendar"
@@ -66,10 +69,10 @@ CURRENT_DATE=$(date +%Y-%m-%d)
         echo "$cal_output"
     fi
     
-    # Navigation buttons (three separate lines)
-    echo "◀  Назад"
-    echo "   Сегодня"
-    echo "▶  Далее"
+    # Navigation buttons (localized)
+    echo "◀  $(t "previous")"
+    echo "   $(t "today")"
+    echo "▶  $(t "next")"
     
 } | rofi -dmenu \
     -p " " \
@@ -81,13 +84,13 @@ CURRENT_DATE=$(date +%Y-%m-%d)
     read -r result
     
     case "$result" in
-        *"Назад"*)
+        *"$(t "previous")"*)
             exec "$0" prev
             ;;
-        *"Далее"*)
+        *"$(t "next")"*)
             exec "$0" next
             ;;
-        *"Сегодня"*)
+        *"$(t "today")"*)
             exec "$0" today
             ;;
         *)

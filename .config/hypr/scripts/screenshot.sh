@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Screenshot script - select area and copy to clipboard
-# Also saves to ~/Pictures/Screenshots/
+# Load translations
+source ~/.config/hypr/scripts/locale.sh
 
+# Screenshot script - select area and copy to clipboard
 SCREENSHOT_DIR="$HOME/Pictures/Screenshots"
 mkdir -p "$SCREENSHOT_DIR"
 
@@ -17,7 +18,7 @@ grim -g "$(slurp)" "$FILEPATH"
 wl-copy < "$FILEPATH"
 
 # Send notification with preview
-notify-send "Screenshot captured" "Saved to $FILENAME" \
+notify-send "$(t "screenshot_captured")" "$(t "saved_to") $FILENAME" \
   --icon="$FILEPATH" \
   --urgency=low \
   --expire-time=3000

@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+source ~/.config/hypr/scripts/locale.sh
+
 # Universal Theme Switcher
 # Changes colors for: Hyprland, Waybar, Rofi, Hyprlock, SwayNC, SDDM
 
@@ -28,7 +30,7 @@ apply_theme() {
     
     # Check if theme exists
     if [ ! -f "$THEMES_DIR/theme-$THEME.conf" ]; then
-        notify-send "Theme Error" "Theme '$THEME' not found" --urgency=critical
+        notify-send "$(t "theme_error")" "$(t "theme") '$THEME' $(t "error")" --urgency=critical
         exit 1
     fi
     
@@ -112,7 +114,7 @@ apply_theme() {
     fi
     swaync &
     
-    notify-send "Theme Applied" "Switched to $THEME theme" \
+    notify-send "$(t "theme_applied")" "$(t "switched_to") $THEME $(t "theme")" \
         --urgency=low \
         --expire-time=2000
 }
@@ -129,7 +131,7 @@ case "$ACTION" in
         
         chosen=$(printf "%s\n" "${THEMES[@]}" | \
             rofi -dmenu \
-                -p "Select Theme" \
+                -p "$(t "select_theme")" \
                 -theme ~/.config/rofi/launcher.rasi \
                 -selected-row $current_index)
         
