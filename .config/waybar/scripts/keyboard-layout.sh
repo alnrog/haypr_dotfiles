@@ -1,37 +1,28 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
-# Waybar keyboard layout indicator - polling mode
-# Обновляется каждую секунду
+# Load translations
+source ~/.config/hypr/scripts/locale.sh
 
-get_layout() {
-    LAYOUT=$(hyprctl devices -j | jq -r '.keyboards[] | select(.main == true) | .active_keymap' 2>/dev/null || echo "English")
-    
-    if [[ "$LAYOUT" =~ "Russian" ]]; then
-        echo "ru"
-    else
-        echo "en"
-    fi
-}
+# Keyboard layout indicator for Waybar
+# Polling mode - updates every second
 
-print_output() {
-    local LAYOUT=$(get_layout)
-    local CLASS=""
-    local TOOLTIP=""
-    
-    if [ "$LAYOUT" = "ru" ]; then
-        CLASS="russian"
-        TOOLTIP="Русская раскладка"
-    else
-        CLASS="english"
-        TOOLTIP="English layout"
-    fi
-    
-    echo "{\"text\":\"$LAYOUT\",\"class\":\"$CLASS\",\"tooltip\":\"$TOOLTIP\"}"
-}
-
-# Polling режим - обновление каждую секунду
 while true; do
-    print_output
+    # Get current layout
+    LAYOUT=$(hyprctl devices -j 2>/dev/null | jq -r '.keyboards[] | select(.main == true) | .active_keymap' 2>/dev/null || echo "English")
+    
+    # Determine layout and class
+    if [[ "$LAYOUT" =~ [Rr]ussian ]]; then
+        TEXT="ru"
+        CLASS="russian"
+        TOOLTIP="$(t "russian_layout")"
+    else
+        TEXT="en"
+        CLASS="english"
+        TOOLTIP="$(t "english_layout")"
+    fi
+    
+    # Output JSON for Waybar
+    echo "{\"text\":\"$TEXT\",\"class\":\"$CLASS\",\"tooltip\":\"$TOOLTIP\"}"
+    
     sleep 1
 done
